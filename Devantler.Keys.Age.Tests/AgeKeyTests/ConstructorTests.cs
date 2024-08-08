@@ -17,7 +17,7 @@ public class ConstructorTests
     // Arrange
     string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
     string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
-    var createdAt = DateTime.Parse("1920-08-18T00:00:00+00:00", CultureInfo.InvariantCulture);
+    var createdAt = DateTime.SpecifyKind(DateTime.UnixEpoch.AddDays(18400), DateTimeKind.Utc);
 
     // Act
     var ageKey = new AgeKey(publicKey, privateKey, createdAt);
@@ -57,6 +57,7 @@ public class ConstructorTests
     // Arrange
     string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
     string privateKey = "invalid";
+    // enforce GMT timezone for createdAt date
     var createdAt = DateTime.SpecifyKind(DateTime.UnixEpoch.AddDays(18400), DateTimeKind.Utc);
 
     // Act
