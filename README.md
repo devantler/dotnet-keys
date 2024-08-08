@@ -4,15 +4,17 @@
   <summary>Show/hide folder structure</summary>
 
 <!-- readme-tree start -->
-
 ```
 .
-└── .github
-    └── workflows
+├── .github
+│   └── workflows
+├── Devantler.Keys.Age
+├── Devantler.Keys.Age.Tests
+│   └── AgeKeyTests
+└── Devantler.Keys.Core
 
-2 directories
+6 directories
 ```
-
 <!-- readme-tree end -->
 
 </details>
