@@ -46,21 +46,37 @@ The library currently supports the following key models:
 
 ### The Age Key Model
 
-The Age key model is a simple key model that represents an Age key. To create a new Age key, you can use the `AgeKey` class.
+The Age key model is a simple key model that represents an Age key. To create a new Age key, you can use the `AgeKey` class. To create an age key with a current created date, you can construct the `AgeKey` class with the public and private keys.
 
 ```csharp
-// Creating an Age key.
-var ageKey = new AgeKey();
+string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
+string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
 
-// Creating an Age key from values.
-var ageKey = new AgeKey("public-key", "private-key");
-
-// Creating an Age key from values with a custom creation date.
-var ageKey = new AgeKey("public-key", "private-key", new DateTime(2024, 12, 31));
-
-// Creating an Age key from an existing key file.
-var ageKey = new AgeKey("path/to/key/file.age");
-
-// Creating an Age key from an existing key file with a custom creation date.
-var ageKey = new AgeKey("path/to/key/file.age", new DateTime(2024, 12, 31));
+var ageKey = new AgeKey(publicKey, privateKey);
 ```
+
+If you want to create a new Age key with a specific created date, you can use the `AgeKey` class with the public and private keys and the created date.
+
+```csharp
+string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
+string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
+DateTime createdDate = DateTime.UtcNow;
+
+var ageKey = new AgeKey(publicKey, privateKey, createdDate);
+```
+
+And if you want to serialize the Age key, you can use the `ToString()` method.
+
+```csharp
+string serializedAgeKey = ageKey.ToString();
+
+Console.WriteLine(serializedAgeKey);
+
+// Output:
+// # created: 1920-08-18T01:00:00+01:00
+// # public key: age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn
+// AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ
+```
+
+> [!NOTE]
+> If you are looking for a library to help generate Age keys you can use the [`Devantler.AgeCLI` library](https://github.com/devantler/dotnet-age-cli), which embeds the `age-keygen` binary to generate Age keys to files or in-memory. It also uses the `AgeKey` class so the generated keys are easy to use in your .NET applications.
