@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Devantler.Keys.Core;
 
@@ -9,12 +11,35 @@ namespace Devantler.Keys.Age;
 public class AgeKey : IKey
 {
   /// <summary>
+  /// Creates a new instance of the <see cref="AgeKey"/> class.
+  /// </summary>
+  /// <param name="publicKey"></param>
+  /// <param name="privateKey"></param>
+  /// <param name="createdAt"></param>
+  [SetsRequiredMembers]
+  public AgeKey(string publicKey, string privateKey, DateTime createdAt = default)
+  {
+    PublicKey = publicKey;
+    PrivateKey = privateKey;
+    CreatedAt = createdAt == default ? DateTime.Now : createdAt;
+    Validator.ValidateObject(this, new ValidationContext(this), validateAllProperties: true);
+  }
+
+  /// <summary>
   /// The public key.
   /// </summary>
+  /// <summary>
+  /// The public key.
+  /// </summary>
+  [RegularExpression(@"^age1[a-z0-9]{58}$", ErrorMessage = "The public key must be a valid Age public key.")]
   public required string PublicKey { get; set; }
   /// <summary>
   /// The private key.
   /// </summary>
+  /// <summary>
+  /// The private key.
+  /// </summary>
+  [RegularExpression(@"^AGE-SECRET-KEY-1[A-Z0-9]{58}$", ErrorMessage = "The private key must be a valid Age secret key.")]
   public required string PrivateKey { get; set; }
 
   /// <summary>
