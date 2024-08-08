@@ -38,7 +38,7 @@ public class ConstructorTests
     // Arrange
     string publicKey = "invalid";
     string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
-    var createdAt = DateTime.Parse("1920-08-18T00:00:00+00:00", CultureInfo.InvariantCulture);
+    var createdAt = DateTime.Parse("1920-08-18T00:00:00+00:00", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
 
     // Act
     var ageKey = default(AgeKey);
