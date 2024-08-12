@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using Devantler.Keys.Core;
+using Devantler.Keys.Age.Utils;
 
 namespace Devantler.Keys.Age;
 
@@ -53,9 +53,8 @@ public class AgeKey : IKey
   /// <returns></returns>
   public override string ToString()
   {
-    // I need the date in this format 2021-01-02T15:30:45+01:00
     return $"""
-    # created: {CreatedAt.ToString("yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture)}
+    # created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(CreatedAt)}
     # public key: {PublicKey}
     {PrivateKey}
     """;
