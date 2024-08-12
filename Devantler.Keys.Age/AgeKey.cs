@@ -53,9 +53,8 @@ public class AgeKey : IKey
   /// <returns></returns>
   public override string ToString()
   {
-    // I need the date in this format 2021-01-02T15:30:45+01:00
     return $"""
-    # created: {CreatedAt.ToString("yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture)}
+    # created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(CreatedAt)}
     # public key: {PublicKey}
     {PrivateKey}
     """;
