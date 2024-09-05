@@ -21,8 +21,8 @@ public class AgeKey : IKey
     ArgumentNullException.ThrowIfNull(rawKey);
 
     string[] lines = rawKey.Split(Environment.NewLine);
-    if (lines.Length != 4)
-      throw new ArgumentException("The raw key must have exactly 4 lines (including newline at end).", nameof(rawKey));
+    if (lines.Length != 3)
+      throw new ArgumentException("The raw key must have exactly 3 lines.", nameof(rawKey));
     CreatedAt = DateTime.Parse(lines[0].Replace("# created: ", "", StringComparison.InvariantCulture), CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
     PublicKey = lines[1].Replace("# public key: ", "", StringComparison.InvariantCulture);
     PrivateKey = lines[2];
