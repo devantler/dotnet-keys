@@ -40,7 +40,7 @@ public class AgeKey : IKey
   {
     PublicKey = publicKey;
     PrivateKey = privateKey;
-    CreatedAt = createdAt == default ? DateTime.Now : createdAt;
+    CreatedAt = createdAt == default ? DateTime.UtcNow : createdAt;
     Validator.ValidateObject(this, new ValidationContext(this), validateAllProperties: true);
   }
 
