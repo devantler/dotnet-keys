@@ -66,7 +66,6 @@ public class ConstructorTests
 
     // Assert
     _ = Assert.Throws<ArgumentException>(act);
-
   }
 
   /// <summary>

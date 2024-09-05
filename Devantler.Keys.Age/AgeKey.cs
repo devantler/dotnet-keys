@@ -20,7 +20,7 @@ public class AgeKey : IKey
   {
     ArgumentNullException.ThrowIfNull(rawKey);
 
-    string[] lines = rawKey.Split("\n");
+    string[] lines = rawKey.Split(Environment.NewLine);
     if (lines.Length != 3)
       throw new ArgumentException("The raw key must have exactly 3 lines.", nameof(rawKey));
     CreatedAt = DateTime.Parse(lines[0].Replace("# created: ", "", StringComparison.InvariantCulture), CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
