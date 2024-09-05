@@ -70,12 +70,5 @@ public class AgeKey : IKey
   /// Prints the key in the Age format.
   /// </summary>
   /// <returns></returns>
-  public override string ToString()
-  {
-    return $"""
-    # created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(CreatedAt)}
-    # public key: {PublicKey}
-    {PrivateKey}
-    """;
-  }
+  public override string ToString() => $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(CreatedAt)}{Environment.NewLine}# public key: {PublicKey}{Environment.NewLine}{PrivateKey}";
 }
