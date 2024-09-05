@@ -35,7 +35,7 @@ public class ConstructorTests
   }
 
   /// <summary>
-  /// Tests that an age key is created with valid data.
+  /// Tests that an exception is thrown when the raw key is invalid.
   /// </summary>
   [Fact]
   public void Constructor_GivenInvalidRawKey_ShouldThrowException()
@@ -55,6 +55,31 @@ public class ConstructorTests
 
     // Assert
     _ = Assert.Throws<ValidationException>(act);
+  }
+
+  /// <summary>
+  /// Tests that an exception is thrown when the raw key is not three lines.
+  /// </summary>
+  [Fact]
+  public void Constructor_GivenRawKeyWithInvalidLineCount_ShouldThrowException()
+  {
+    // Arrange
+    var createdAt = DateTime.SpecifyKind(DateTime.UnixEpoch.AddDays(18400), DateTimeKind.Utc);
+    string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
+    string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
+    string rawKey = $"""
+      # created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}
+      # public key: {publicKey}
+      {privateKey}
+      whoops this key has an extra line
+      """;
+
+    // Act
+    void act() => _ = new AgeKey(rawKey);
+
+    // Assert
+    _ = Assert.Throws<ArgumentException>(act);
+
   }
 
   /// <summary>

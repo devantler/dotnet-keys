@@ -22,7 +22,7 @@ public class AgeKey : IKey
 
     string[] lines = rawKey.Split("\n");
     if (lines.Length != 3)
-      throw new ArgumentException("The key is not in the correct format.");
+      throw new ArgumentException("The raw key must have exactly 3 lines.", nameof(rawKey));
     CreatedAt = DateTime.Parse(lines[0].Replace("# created: ", "", StringComparison.InvariantCulture), CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
     PublicKey = lines[1].Replace("# public key: ", "", StringComparison.InvariantCulture);
     PrivateKey = lines[2];
