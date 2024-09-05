@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using Devantler.Keys.Core;
 using Devantler.Keys.Age.Utils;
+using System.Globalization;
 
 namespace Devantler.Keys.Age;
 
@@ -10,6 +11,24 @@ namespace Devantler.Keys.Age;
 /// </summary>
 public class AgeKey : IKey
 {
+  /// <summary>
+  /// Creates a new instance of the <see cref="AgeKey"/> class from a raw key.
+  /// </summary>
+  /// <param name="rawKey"></param>
+  [SetsRequiredMembers]
+  public AgeKey(string rawKey)
+  {
+    ArgumentNullException.ThrowIfNull(rawKey);
+
+    string[] lines = rawKey.Split(Environment.NewLine);
+    if (lines.Length != 3)
+      throw new ArgumentException("The raw key must have exactly 3 lines.", nameof(rawKey));
+    CreatedAt = DateTime.Parse(lines[0].Replace("# created: ", "", StringComparison.InvariantCulture), CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+    PublicKey = lines[1].Replace("# public key: ", "", StringComparison.InvariantCulture);
+    PrivateKey = lines[2];
+    Validator.ValidateObject(this, new ValidationContext(this), validateAllProperties: true);
+  }
+
   /// <summary>
   /// Creates a new instance of the <see cref="AgeKey"/> class.
   /// </summary>
