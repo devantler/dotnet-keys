@@ -4,6 +4,8 @@
 [![Test](https://github.com/devantler/dotnet-keys/actions/workflows/test.yaml/badge.svg)](https://github.com/devantler/dotnet-keys/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/devantler/dotnet-keys/graph/badge.svg?token=RhQPb4fE7z)](https://codecov.io/gh/devantler/dotnet-keys)
 
+A simple .NET library with a collection of common assymetric and symmetric key models.
+
 <details>
   <summary>Show/hide folder structure</summary>
 
@@ -25,8 +27,6 @@
 <!-- readme-tree end -->
 
 </details>
-
-A simple .NET library with a collection of common assymetric and symmetric key models.
 
 ## Prerequisites
 
