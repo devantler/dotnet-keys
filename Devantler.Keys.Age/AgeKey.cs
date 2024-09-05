@@ -75,7 +75,7 @@ public class AgeKey : IKey
     return $"""
     # created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(CreatedAt)}
     # public key: {PublicKey}
-    {PrivateKey}{Environment.NewLine}
+    {PrivateKey}
     """;
   }
 }

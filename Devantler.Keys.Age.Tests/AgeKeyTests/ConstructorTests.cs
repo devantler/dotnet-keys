@@ -18,7 +18,7 @@ public class ConstructorTests
     var createdAt = DateTime.SpecifyKind(DateTime.UnixEpoch.AddDays(18400), DateTimeKind.Utc);
     string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
     string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
-    string rawKey = $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}{Environment.NewLine}# public key: {publicKey}{Environment.NewLine}{privateKey}{Environment.NewLine}";
+    string rawKey = $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}{Environment.NewLine}# public key: {publicKey}{Environment.NewLine}{privateKey}";
 
     // Act
     var ageKey = new AgeKey(rawKey);
@@ -40,7 +40,7 @@ public class ConstructorTests
     var createdAt = DateTime.SpecifyKind(DateTime.UnixEpoch.AddDays(18400), DateTimeKind.Utc);
     string publicKey = "age1wrczv4ll5att0mm8tmp4052dont-expect-this-to-workfxvefuqxu8rqtpe47chskk9dgn";
     string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2PEFdont-expect-this-to-work8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
-    string rawKey = $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}{Environment.NewLine}# public key: {publicKey}{Environment.NewLine}{privateKey}{Environment.NewLine}";
+    string rawKey = $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}{Environment.NewLine}# public key: {publicKey}{Environment.NewLine}{privateKey}";
 
     // Act
     void act() => _ = new AgeKey(rawKey);
@@ -59,7 +59,7 @@ public class ConstructorTests
     var createdAt = DateTime.SpecifyKind(DateTime.UnixEpoch.AddDays(18400), DateTimeKind.Utc);
     string publicKey = "age1wrczv4ll5att0mm8tmp4052z4fadw5zefxvefuqxu8rqtpe47chskk9dgn";
     string privateKey = "AGE-SECRET-KEY-1PW4MMMJ9KMZ94C2N2FM3UPLPQPEF8G9QHXP8VX6V6GW3EN9QMSVQX0ATHQ";
-    string rawKey = $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}{Environment.NewLine}# public key: {publicKey}{Environment.NewLine}{privateKey}{Environment.NewLine}whoops this is an extra line{Environment.NewLine}";
+    string rawKey = $"# created: {DateTimeFormatter.FormatDateTimeWithCustomOffset(createdAt)}{Environment.NewLine}# public key: {publicKey}{Environment.NewLine}{privateKey}{Environment.NewLine}whoops this is an extra line";
 
     // Act
     void act() => _ = new AgeKey(rawKey);
