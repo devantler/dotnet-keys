@@ -47,7 +47,7 @@ If you need to create a new key model, you can install the `Core` package from N
 dotnet add package Devantler.Keys.Core
 ```
 
-## Usage
+## 📝 Usage
 
 The library currently supports the following key models:
 
