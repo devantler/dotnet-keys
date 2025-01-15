@@ -22,7 +22,7 @@ A simple .NET library with a collection of common assymetric and symmetric key m
 │       └── DateTimeFormatterTests
 └── Devantler.Keys.Core
 
-9 directories
+10 directories
 ```
 <!-- readme-tree end -->
 
